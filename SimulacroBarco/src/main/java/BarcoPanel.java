@@ -9,7 +9,7 @@ public class BarcoPanel extends JPanel {
         setBackground(Color.CYAN);
         this.barco = barco;
         timer = new Timer(20, e -> {
-            barco.acelerar(getWidth());
+            barco.acelerar();
 
         });
 
