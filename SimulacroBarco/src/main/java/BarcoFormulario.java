@@ -33,7 +33,7 @@ public class BarcoFormulario {
             public void actionPerformed(ActionEvent e) {
                 try {
                     barco.zarpar();
-                    txtEstado.setText(" ENCENDIDO");
+                    txtEstado.setText("NAVEGANDO");
                 }
                 catch (BarcoException ex){
                     JOptionPane.showMessageDialog(panelPrincipal, ex.getMessage());
@@ -45,7 +45,7 @@ public class BarcoFormulario {
             public void actionPerformed(ActionEvent e) {
                 try {
                     barco.detener();
-                    txtEstado.setText(" APAGADO");
+                    txtEstado.setText("DETENIDO");
                     txtVelocidad.setText(String.valueOf(barco.getVelocidad()));
                 }
                 catch (BarcoException ex){

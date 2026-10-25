@@ -9,11 +9,11 @@ public class BarcoPanel extends JPanel {
         setBackground(new Color(50, 52, 81));
         this.barco = barco;
         timer = new Timer(20, e -> {
-            barco.acelerar();
-
+            barco.mover(getWidth());
+            repaint();
 
         });
-
+        timer.start();
     }
     @Override
     protected void paintComponent(Graphics g){

@@ -37,6 +37,16 @@ public class Barco {
         velocidad +=5;
         return velocidad;
     }
+    public void mover(int ancho) throws BarcoException{
+        if(!encendido){
+            return;
+        }
+        x += velocidad;
+        if(x>ancho){
+            x =0;
+        }
+
+    }
 
     public void dibujarBarco(Graphics g){
         //casco
