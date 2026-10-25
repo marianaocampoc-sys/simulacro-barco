@@ -6,10 +6,11 @@ public class BarcoPanel extends JPanel {
 
     public BarcoPanel(Barco barco){
         setPreferredSize(new Dimension(600,400));
-        setBackground(Color.CYAN);
+        setBackground(new Color(50, 52, 81));
         this.barco = barco;
         timer = new Timer(20, e -> {
             barco.acelerar();
+
 
         });
 
@@ -17,6 +18,10 @@ public class BarcoPanel extends JPanel {
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
+        barco.dibujarBarco(g);
+        //mar
+        g.setColor(new Color(1, 64, 255));
+        g.fillRect(0,300, getWidth(), getHeight());
 
     }
 }
