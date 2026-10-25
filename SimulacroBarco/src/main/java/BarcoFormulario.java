@@ -26,6 +26,7 @@ public class BarcoFormulario {
         panelDibujo.setLayout(new BorderLayout());
         panelDibujo.add(lienzo);
         lblEstado.setText("SIN ESTADO");
+        lblVelocidad.setText("VELOCIDAD" +barco.getVelocidad());
         zarparButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

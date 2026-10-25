@@ -8,28 +8,35 @@ public class Barco {
         this.encendido=false;
 
     }
-    public String zarpar() throws BarcoException {
+    public void zarpar() throws BarcoException {
         if(encendido){
             throw new BarcoException("El barco ya esta navegando, dude");
         }
         encendido=true;
-        return "ENCENDIDO";
+
     }
-    public String detener() throws BarcoException{
+    public void detener() throws BarcoException{
         if(!encendido){
             throw new BarcoException("El barco esta detenido, como vas a detener un barco detenido?");
         }
         encendido=false;
-        return "Apagar";
+        velocidad= 5;
     }
     public void acelerar() throws BarcoException{
         if(!encendido){
             throw new BarcoException("No se puede acelerar un barco detenido");
+        }
+        if(velocidad==VELOCIDAD_MAXIMA){
+            throw new BarcoException("Ya no puede acelerar mas, estamos en la velocidad maxima");
         }
         velocidad +=5;
     }
 
     public boolean isEncendido() {
         return encendido;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
     }
 }
