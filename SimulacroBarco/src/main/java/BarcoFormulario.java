@@ -25,14 +25,15 @@ public class BarcoFormulario {
         lienzo = new BarcoPanel(barco);
         panelDibujo.setLayout(new BorderLayout());
         panelDibujo.add(lienzo);
-        lblEstado.setText("SIN ESTADO");
-        lblVelocidad.setText("VELOCIDAD" +barco.getVelocidad());
+        lblEstado.setText("ESTADO:");
+        lblVelocidad.setText("VELOCIDAD");
+        txtVelocidad.setText(String.valueOf(barco.getVelocidad()));
         zarparButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     barco.zarpar();
-                    lblEstado.setText("ESTADO: ENCENDIDO");
+                    txtEstado.setText(" ENCENDIDO");
                 }
                 catch (BarcoException ex){
                     JOptionPane.showMessageDialog(panelPrincipal, ex.getMessage());
@@ -44,7 +45,8 @@ public class BarcoFormulario {
             public void actionPerformed(ActionEvent e) {
                 try {
                     barco.detener();
-                    lblEstado.setText("ESTADO: APAGADO");
+                    txtEstado.setText(" APAGADO");
+                    txtVelocidad.setText(String.valueOf(barco.getVelocidad()));
                 }
                 catch (BarcoException ex){
                     JOptionPane.showMessageDialog(panelPrincipal, ex.getMessage());
@@ -56,7 +58,7 @@ public class BarcoFormulario {
             public void actionPerformed(ActionEvent e) {
                 try {
                     barco.acelerar();
-                    lblEstado.setText("ESTADO ACELERANDO" );
+                    txtVelocidad.setText(String.valueOf(barco.getVelocidad()));
                 }
                 catch (BarcoException ex){
                     JOptionPane.showMessageDialog(panelPrincipal, ex.getMessage());

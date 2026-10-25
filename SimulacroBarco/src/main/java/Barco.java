@@ -20,9 +20,9 @@ public class Barco {
             throw new BarcoException("El barco esta detenido, como vas a detener un barco detenido?");
         }
         encendido=false;
-        velocidad= 5;
+        this.velocidad= 5;
     }
-    public void acelerar() throws BarcoException{
+    public int acelerar() throws BarcoException{
         if(!encendido){
             throw new BarcoException("No se puede acelerar un barco detenido");
         }
@@ -30,6 +30,7 @@ public class Barco {
             throw new BarcoException("Ya no puede acelerar mas, estamos en la velocidad maxima");
         }
         velocidad +=5;
+        return velocidad;
     }
 
     public boolean isEncendido() {
