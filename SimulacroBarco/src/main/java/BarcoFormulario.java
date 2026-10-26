@@ -16,17 +16,17 @@ public class BarcoFormulario {
     private JPanel panelDibujo;
     private JLabel lblVelocidad;
     private JTextField txtVelocidad;
-    //los que yo creo
+    //atributos que creo yo
     private Barco barco;
     private BarcoPanel lienzo;
-
+    //constructor
     public BarcoFormulario(){
         barco = new Barco();
         lienzo = new BarcoPanel(barco);
         panelDibujo.setLayout(new BorderLayout());
         panelDibujo.add(lienzo);
-        lblEstado.setText("ESTADO:");
-        lblVelocidad.setText("VELOCIDAD");
+        txtEstado.setText("SIN ESTADO");
+        txtNombreCap.setText("Capitan patas negras");
         txtVelocidad.setText(String.valueOf(barco.getVelocidad()));
         zarparButton.addActionListener(new ActionListener() {
             @Override
@@ -56,20 +56,22 @@ public class BarcoFormulario {
         acelerarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                try {
+                try{
                     barco.acelerar();
                     txtVelocidad.setText(String.valueOf(barco.getVelocidad()));
                 }
                 catch (BarcoException ex){
                     JOptionPane.showMessageDialog(panelPrincipal, ex.getMessage());
                 }
-
             }
         });
     }
+    //botones
+    //form main
+
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("SIMULADOR BARCO");
+        JFrame frame = new JFrame("BARCO SIMULADOR");
         frame.setContentPane(new BarcoFormulario().panelPrincipal);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();

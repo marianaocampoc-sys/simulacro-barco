@@ -1,4 +1,4 @@
-public class BarcoException extends RuntimeException {
+public class BarcoException extends Exception {
     public BarcoException(String message) {
         super(message);
     }

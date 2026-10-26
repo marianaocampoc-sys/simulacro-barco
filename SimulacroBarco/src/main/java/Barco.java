@@ -1,67 +1,72 @@
 import java.awt.*;
 public class Barco {
-    private  final int VELOCIDAD_MAXIMA = 20;
-    private boolean encendido;
-    private int velocidad;
+    //atributos
+    private final static int VELOCIDAD_MAXIMA= 20;
     private int x;
     private int y;
+    private boolean navegando;
+    private int velocidad;
 
+    //constructor que en este caso inicializa x pero generalmente recibe x y y
     public Barco(){
-        this.velocidad=5;
-        this.encendido=false;
-        x=50;
-        y=275;
+        x=100;
+        y=150;
+        navegando=false;
+        velocidad=5;
+    }
+    //metodos
+    public void zarpar() throws BarcoException{
+        if (navegando){
+            throw new BarcoException("El barco ya esta navegando, no lo puedes zarpar otra vez");
+        }
+        navegando=true;
 
     }
-    public void zarpar() throws BarcoException {
-        if(encendido){
-            throw new BarcoException("El barco ya esta navegando, dude");
+    public void detener()throws BarcoException{
+        if (!navegando){
+            throw new BarcoException("El barco ya esta detenido, no se puede volver a detener");
         }
-        encendido=true;
-
+        navegando = false;
+        velocidad=5;
     }
-    public void detener() throws BarcoException{
-        if(!encendido){
-            throw new BarcoException("El barco esta detenido, como vas a detener un barco detenido?");
-        }
-        encendido=false;
-        this.velocidad= 5;
-    }
-    public int acelerar() throws BarcoException{
-        if(!encendido){
+    public void acelerar()throws BarcoException{
+        if(!navegando){
             throw new BarcoException("No se puede acelerar un barco detenido");
         }
         if(velocidad==VELOCIDAD_MAXIMA){
-            throw new BarcoException("Ya no puede acelerar mas, estamos en la velocidad maxima");
+            throw new BarcoException("No se puede acelerar mas, estamos en nuestra maxima velocidad");
         }
-        velocidad +=5;
-        return velocidad;
+        velocidad += 5;
+
     }
-    public void mover(int ancho) throws BarcoException{
-        if(!encendido){
-            return;
+    public void mover(int ancho){
+        if(!navegando){
+           return;
         }
-        x += velocidad;
+        x +=velocidad;
         if(x>ancho){
-            x =0;
+            x = 0;
         }
-
     }
-
-    public void dibujarBarco(Graphics g){
+    //dibujar que recibe graphics g pero no override
+    protected void dibujar(Graphics g){
+        //siendo muy honesta no he agarrado todavia la logica de dibujar
         //casco
-        g.setColor(new Color(28, 25, 25));
-        g.fillRect(x,y,120, 30);
+        g.setColor(new Color(25, 19, 19));
+        g.fillRect(x,y,100,50);
         //cabina
-        g.setColor(new Color(227, 213, 213));
-        g.fillRect(x+30,y-25,50,25);
+        g.setColor(new Color(250, 226, 226));
+        g.fillRect(x+25,y-25, 50, 25);
         //chimenea
-        g.setColor(new Color(152, 139, 66));
-        g.fillRect(x+50, y-45, 10,20);
+        g.setColor(new Color(147, 89, 2));
+        g.fillRect(x+45, y - 47, 10, 25);
+
     }
 
-    public boolean isEncendido() {
-        return encendido;
+    //getters
+
+    public boolean isNavegando() {
+        return navegando;
     }
 
     public int getVelocidad() {
